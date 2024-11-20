@@ -3,8 +3,8 @@
 
 #include <string>
 #include <vector>
+#include <variant>
 
-// Define DLLEXPORT for Windows, leave as empty for other OS's
 #define open extern "C"
 #ifdef _WIN32
     #define DLLEXPORT __declspec(dllexport)
@@ -14,12 +14,10 @@
     #define helper
 #endif
 
-// Function pointer type for library functions
-typedef std::string (*FunctionPtr)(const std::vector<std::string>& args);
+using ReturnType = std::variant<std::nullptr_t, std::string>;
 
-// Function declarations with DLLEXPORT
-open DLLEXPORT std::string helper print(const std::vector<std::string>& args);
-open DLLEXPORT std::string helper add(const std::vector<std::string>& args);
+// Function pointer type for library functions
+typedef ReturnType(*FunctionPtr)(const std::vector<std::string>& args);
 
 // Function to list all available functions in the library
 open DLLEXPORT std::vector<std::string> helper listFunctions();
