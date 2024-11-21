@@ -1,5 +1,5 @@
 # Define the target
-TARGET = libmain_lib
+TARGET = lib_testlib
 SRCS = main.cpp
 HEADERS = main_lib.h
 
