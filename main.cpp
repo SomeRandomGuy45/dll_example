@@ -22,3 +22,14 @@ open DLLEXPORT FunctionPtr helper getFunction(const char* name) {
     }
     return nullptr;
 }
+
+open DLLEXPORT std::vector<std::string> helper listVars()
+{
+    return {};
+}
+
+open DLLEXPORT VarType helper getVariable(const char *name)
+{
+    std::string varName(name);
+    return "";
+}
