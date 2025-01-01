@@ -1,6 +1,8 @@
 #include "main_lib.h"
 #include <iostream>
 
+std::string test = "hi!";
+
 open DLLEXPORT ReturnType helper print_test(const std::vector<std::string>& args) {
     std::cout << "hi!\n";
     return nullptr;
@@ -25,11 +27,14 @@ open DLLEXPORT FunctionPtr helper getFunction(const char* name) {
 
 open DLLEXPORT std::vector<std::string> helper listVars()
 {
-    return {};
+    return {"test"};
 }
 
 open DLLEXPORT VarType helper getVariable(const char *name)
 {
     std::string varName(name);
+    if (varName == "test") {
+        return test;
+    }
     return "";
 }
